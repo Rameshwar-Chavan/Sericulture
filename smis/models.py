@@ -64,19 +64,5 @@ class form3(models.Model):
 
 class form4(models.Model):
 
-    farmer = models.ForeignKey(farmer_registration, on_delete=models.CASCADE)
-    चांगल्या_कोषांचे_वजन_कि_ग्रॅ = models.ForeignKey(
-        form3, on_delete=models.CASCADE)
-
-    Andipunj_count = models.ForeignKey(form2, on_delete=models.CASCADE)
-    चांगल्या_कोषांना_मिळालेला_दर_प्रति_कि_ग्रॅ = models.DecimalField(
-        decimal_places=3, max_digits=10)
-
-    अं_पुं_सरासरी_उत्पादन_कि_ग्रॅ = models.DecimalField(
-        decimal_places=3, max_digits=10)
-    अनुदानास_पात्र_कोषांचे_वजन_कि_ग्रॅ = models.DecimalField(
-        decimal_places=3, max_digits=10)
-    देय_अनुदान_रक्कम_रू = models.DecimalField(decimal_places=3, max_digits=10)
-
     def __int__(self):
         return self.pk
