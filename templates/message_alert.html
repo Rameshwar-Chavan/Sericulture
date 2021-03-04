@@ -1,8 +1,20 @@
-{% load static %}
-{% if messages %}
-  {% for message in messages %}
-    <div class="alert {{message.tags}} m-2" id="msg" role="alert">
-      {{ message }}
-    </div>
-  {% endfor %}
-{% endif %}
+{% load static %} 
+  {% if messages %} 
+    {% for message in messages %} 
+      {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+        <p class="text-center alert alert-primary" id="msg" role="alert">{{ message }}</p>
+      {% endif %} 
+      
+      {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+        <p class="text-center alert alert-success" id="msg" role="alert">{{ message }}</p>
+    {% endif %} 
+    
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+        <p class="text-center alert alert-danger" id="msg" role="alert">{{ message }}</p>
+    {% endif %}
+    
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+        <p class="text-center alert alert-warning" id="msg" role="alert">{{ message }}</p>
+    {% endif %}
+  {% endfor %} 
+  {% endif %}

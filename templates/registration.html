@@ -1,586 +1,380 @@
- {% load static %}
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>| महाराष्ट्र शासन रेशीम विभाग |</title>
-
-        <!-- Google Font: Source Sans Pro -->
-        <link
-          rel="stylesheet"
-          href=" {% static 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback' %} "
-        />
-        <!-- Font Awesome -->
-        <link
-          rel="stylesheet"
-          href=" {% static 'plugins/fontawesome-free/css/all.min.css' %} "
-        />
-        <!-- Ionicons -->
-        <link
-          rel="stylesheet"
-          href=" {% static 'https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' %} "
-        />
-
-        <!-- Theme style -->
-        <link
-          rel="stylesheet"
-          href=" {% static 'dist/css/adminlte.min.css' %} "
-        />
-      </head>
-      <body class="hold-transition sidebar-mini">
-      <div class="wrapper">
-          <!-- Navbar -->
-        <nav
-            class="main-header navbar navbar-expand navbar-white navbar-light"
-          >
-            <!-- Left navbar links -->
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a
-                  class="nav-link"
-                  data-widget="pushmenu"
-                  href=" {% static '#' %} "
-                  role="button"
-                  ><i class="fas fa-bars"></i
-                ></a>
-              </li>
-              <li class="nav-item d-none d-sm-inline-block">
-                <a href="{% url 'index' %}" class="nav-link">Home</a>
-              </li>
-              <li class="nav-item d-none d-sm-inline-block">
-                <a href="{% static '#' %}" class="nav-link">Contact</a>
-              </li>
-            </ul>
-
-            <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto"></ul>
-          </nav>
-          <!-- /.navbar -->
-
-          <!-- Main Sidebar Container -->
-          <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!-- Brand Logo -->
-            <a href="{% url 'index' %}" class="brand-link">
-              <img
-                src="{% static '../../dist/img/AdminLTELogo.png' %}"
-                alt="Admin Logo"
-                class="brand-image img-circle elevation-3"
-                style="opacity: 0.8"
-              />
-              <span class="brand-text font-weight-light"
-                >Sericulture Department</span
-              >
-            </a>
-
-            <!-- Sidebar -->
-            <div class="sidebar">
-              <!-- Sidebar user (optional) -->
-              <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
-                  <img
-                    src="{% static '../../dist/img/user2-160x160.jpg' %}"
-                    class="img-circle elevation-2"
-                    alt="User Image"
-                  />
-                </div>
-                <div class="info">
-                  <a href=" {% static '#' %} " class="d-block"
-                    >Alexander Pierce</a
-                  >
-                </div>
-              </div>
-
-              <!-- Sidebar Menu -->
-              <nav class="mt-2">
-                <ul
-                  class="nav nav-pills nav-sidebar flex-column"
-                  data-widget="treeview"
-                  role="menu"
-                  data-accordion="false"
-                >
-                  <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-                  <li class="nav-item menu-open">
-                    <a href=" {% static '#' %} " class="nav-link active">
-                      <i class="nav-icon fas fa-tachometer-alt"></i>
-                      <p>
-                        Menu
-                        <i class="right fas fa-angle-left"></i>
-                      </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                      <li class="nav-item">
-                        <a href=" {% url 'index' %} " class="nav-link">
-                          <i class="fa fa-home nav-icon"></i>
-                          <p>Home</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a
-                          href=" {% url 'registration' %} "
-                          class="nav-link active"
-                        >
-                          <i class="fa fa-user-circle nav-icon"></i>
-                          <p>Registration</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href=" {% url 'Form2' %} " class="nav-link">
-                          <i class="fa fa-truck nav-icon"></i>
-                          <p>Mulberry Distribution</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href=" {% url 'Form3' %} " class="nav-link">
-                          <i class="fa fa-cart-plus nav-icon"></i>
-                          <p>Production Sales Details</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href=" {% url 'login' %} " class="nav-link">
-                          <i class="fa fa-user nav-icon"></i>
-                          <p>Login</p>
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-            <a href=" {% static '#' %} " class="nav-link">
-              <i class="nav-icon fa fa-table"></i>
-              <p>
-                Report's
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href=" {% static 'pages/tables/simple.html' %} " class="nav-link">
-                  <i class="fa fa-file nav-icon"></i>
-                  <p>Indvidual Report</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href=" {% static 'pages/tables/data.html' %} " class="nav-link">
-                  <i class="fa fa-tag nav-icon"></i>
-                  <p>All Report</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href=" {% static 'pages/tables/jsgrid.html' %} " class="nav-link">
-                  <i class="fa fa-credit-card nav-icon"></i>
-                  <p>Chart</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-         </ul>
-        </nav>
-              <!-- /.sidebar-menu -->
-            </div>
-            <!-- /.sidebar -->
-          </aside>
-
-          <!-- Content Wrapper. Contains page content -->
-          <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-              <div class="container-fluid">
-                <div class="row mb-2">
-                  <div class="col-sm-6">
-                    <h1><b>Farmer Registration</b></h1>
-                  </div>
-                  <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                      <li class="breadcrumb-item">
-                        <a href=" {% url 'index' %} ">Home</a>
-                      </li>
-                      <li class="breadcrumb-item active">Registration</li>
-                    </ol>
-                  </div>
-                </div>
-              </div>
-              <!-- /.container-fluid -->
-            </section>
-      {% if message.success %}
-        {% include 'message_alert.html' %}
-      {% endif %}
-            {% if messages %}
-               <div class="alert alert-success" id="msg" role="alert">
-                 {% for message in messages %}
-                  <h4 class="text-center">{{ message }}</h4>
-               </div>
-                {% endfor %}
-            {% endif %}
-            <!-- Main content -->
-            <section class="content">
-              <div class="container-fluid">
-                <!-- SELECT2 EXAMPLE -->
-                <form action=" {% url 'registration' %} " method="post">
-                 {% csrf_token %}
-                <div class="card card-primary">
-                  <div class="card-header">
-                    <h2 class="card-title"><b>Personal Details</b></h2>
-                  </div>
-                  <!-- /.card-header -->
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="row">
-                          <div class="col-12 col-md-3">
-                            <label for="farmer_name">Farmer Name</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="farmer_name"
-                              name="farmer_name"
-                              placeholder="Farmer Full Name"
-                              required
-                            />
-                          </div>
-                          <div class="col-md-1"></div>
-                          <div class="col-12 col-md-3">
-                            <div class="form-group">
-                              <label for="address">Farmer Address</label>
-                              <textarea
-                                class="form-control"
-                                rows="2" name="address" id="address" placeholder="Address E.g At. CIDCO N-4 Aurangabad"
-                                required
-                              ></textarea>
-                            </div>
-                          </div>
-                          <div class="col-md-1"></div>
-                          <div class="col-12 col-md-2">
-                            <label for="Gender">Gender</label>
-                            <div class="form-group">
-                              <select
-                                class="form-control select2bs4"
-                                data-placeholder="Select a Gender"
-                                style="width: 100%" name="gender" id="gender" required
-                              >
-                                <option value="defualt">Select</option>
-                                <option>Male</option>
-                                <option>Female</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="col-md-1"></div>
-                        </div>
-                        <div class="row">
-                          <div class="col-12 col-md-3">
-                            <label for="religion">Religion</label>
-                            <div class="form-group">
-                              <select
-                                class="form-control select2bs4"
-                                data-placeholder="Select a Religion"
-                                style="width: 100%" name="religion" id="religion" required
-                              >
-                                <option value="select">Select</option>
-                                <option>Hindu</option>
-                                <option>Buddhist</option>
-                                <option>Christian</option>
-                                <option>Jain</option>
-                                <option>Muslim</option>
-                                <option>Parsi</option>
-                                <option>Sikh</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="col-md-1"></div>
-                          <div class="col-12 col-md-3">
-                            <label for="Caste">Caste</label>
-                            <div class="form-group">
-                              <select
-                                class="form-control select2bs4"
-                                data-placeholder="Select a Caste"
-                                style="width: 100%" name="caste" id="caste" required
-                              >
-                                <option value="select">Select</option>
-                                <option>General</option>
-                                <option>(OBC) Other Backward Class</option>
-                                <option>(SBC) Special Backward Class</option>
-                                <option>(SC) Scheduled Caste</option>
-                                <option>(ST) Scheduled Tribe</option>
-                                <option>(VJNT) Vimukt Jat Nomadic Tribe</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-12 col-md-3">
-                            <label for="State">State</label>
-                            <div class="form-group">
-                              <select
-                                class="form-control select2bs4"
-                                data-placeholder="Select a State"
-                                style="width: 100%" name="state" id="state" required
-                              >
-                                <option value="select">Select</option>
-                                <option>Maharashtra</option>
-                                <option>Karnataka</option>
-                                <option>Goa</option>
-                                <option>Andhrapradesh</option>
-                                <option>Sikkim</option>
-                                <option>Punjab</option>
-                                <option>Bihar</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="col-md-1"></div>
-                          <div class="col-12 col-md-3">
-                            <label for="District">District</label>
-                            <div class="form-group">
-                              <select
-                                class="form-control select2bs4"
-                                data-placeholder="Select a District"
-                                style="width: 100%" name="district" id="district" required
-                              >
-                                <option value="select">Select</option>
-                                <option>Aurangabad</option>
-                                <option>Nashik</option>
-                                <option>Jalgaon</option>
-                                <option>Akola</option>
-                                <option>Washim</option>
-                                <option>Nagpur</option>
-                                <option>Jalna</option>
-                                <option>Beed</option>
-
-                              </select>
-                            </div>
-                          </div>
-                          <div class="col-md-1"></div>
-                          <div class="col-12 col-md-3">
-                            <label for="Taluka">Taluka</label>
-                            <div class="form-group">
-                              <select
-                                class="form-control select2bs4"
-                                data-placeholder="Select a District"
-                                style="width: 100%" name="taluka" id="taluka" required
-                              >
-                                <option value="select">Select</option>
-                                <option>Aurangabad</option>
-                                <option>Kannad</option>
-                                <option>Soegaon</option>
-                                <option>Sillod</option>
-                                <option>Phulambri</option>
-                                <option>Khuldabad</option>
-                                <option>Vaijapur</option>
-                                <option>Gangapur</option>
-                                <option>Paithan</option>
-
-
-                              </select>
-                            </div>
-                          </div>
-                          <div class="col-md-1"></div>
-                          <div class="col-12 col-md-3">
-                            <label for="Village">Village</label>
-                            <div class="form-group">
-                              <select
-                                class="form-control select2bs4"
-                                data-placeholder="Select a District"
-                                style="width: 100%" name="village" id="village" required
-                              >
-                                <option value="select">Select</option>
-                                <option>Chittegaon</option>
-                                <option>Pimpri</option>
-                                <option>Chitte-Pimpalgaon</option>
-                                <option>Shendra</option>
-                                <option>Nipani</option>
-                                <option>Garkheda</option>
-                                <option>Adgaon</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="col-md-1"></div>
-                          <div class="col-md-3 form-group">
-                            <label for="pincode">Pincode </label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              name="pincode"
-                              id="pincode" required
-                            />
-                          </div>
-                          <div class="col-md-1"></div>
-                          <div class="col-md-3 form-group">
-                            <label for="mob">Phone Number </label>
-                            <input
-                              type="tel"
-                              class="form-control"
-                              name="phone"
-                              id="phone"
-                              minlength="10"
-                              maxlength="10" required
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- /.card -->
-                <!-- /.card 2 -->
-                <div class="card card-primary">
-                  <div class="card-header">
-                    <h2 class="card-title"><b>Mulberry Farm Details</b></h2>
-                  </div>
-                  <!-- /.card-header -->
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="row">
-                          <div class="col-12 col-md-3">
-                            <label for="RegistrationNo">Registration No.</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="registration_no"
-                              name="registration_no"
-                              required
-                            />
-                          </div>
-                          <div class="col-md-1"></div>
-                          <div class="col-12 col-md-3">
-                            <label for="Mulberry Year"
-                              >Mulberry Cultivation Year</label
-                            >
-                            <div class="form-group">
-                              <input type="date" class="form-control" name="year" id="year" required>
-                            </div>
-                          </div>
-                          <div class="col-md-1"></div>
-                          <div class="col-12 col-md-3">
-                            <label for="RegistrationReceipt"
-                              >Mulberry plantaion Receipt No.</label
-                            >
-                            <input type="text" class="form-control" id="receipt_no" name="receipt_no" required />
-                          </div>
-                          <div class="col-md-1"></div>
-                        </div>
-                        <div class="row">
-                          <div class="col-12 col-md-3">
-                            <label for="Area"
-                              >Plantation Area (In Acres).</label
-                            >
-                            <input
-                              type="number"
-                              class="form-control"
-                              name="area"
-                              id="area"
-                              required
-                            />
-                          </div>
-                          <div class="col-md-1"></div>
-                          <div class="col-12 col-md-3">
-                            <label for="Survey No">Survey No.</label>
-                            <input
-                              type="number"
-                              class="form-control"
-                              name="survey_no"
-                              id="survey_no"
-                              required
-                            />
-                          </div>
-                          <div class="col-md-1"></div>
-                          <div class="col-12 col-md-3">
-                            <label for="Mulberry type"
-                              >Mulberry Plant Breed</label
-                            >
-                            <div class="form-group">
-                              <select
-                                class="form-control select2bs4"
-                                data-placeholder="Select a type"
-                                style="width: 100%"
-                                name="plant_caste"
-                                id="plant_caste"
-                                required
-                              >
-                                <option value="select">Select</option>
-                                <option>Black Mulberry</option>
-                                <option>Red Mulberry</option>
-                                <option>Morus Alba</option>
-                                <option>Morus serrata</option>
-                                <option>Morus Australias</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- /.card 2 -->
-                <br />
-
-                <div class="row">
-                  <div class="col-md-5"></div>
-                  <div class="col-md-1">
-                    <input type="submit" class="btn btn-block btn-primary" value="SAVE">
-                  </div>
-                  <div class="col-md-1">
-                  </div><br>
-                  <div class="col-md-1">
-                    <input type="reset" class="btn btn-block btn-danger" value="CANCEL">
-                  </div>
-                </div>
-                </form>
-                <br />
-                <br />
-              </div>
-            </section>
-          </div>
-
-          <!--Footer Start-->
-          <footer class="main-footer">
-            <strong
-              >Copyright &copy; 2020-2021
-              <a href="https://github.com/Rameshwar-Chavan"
-                >Rameshwar Chavan</a
-              >
-              ||
-              <a href="https://github.com/mangesh-shirodkar"
-                >Mangesh Shirodkar</a
-              >
-            </strong>
-            <b>All rights reserved.</b>
-            <div class="float-right d-none d-sm-inline-block">
-              <a href="http://btech.mit.asia/home">MIT(T)</a>
-              <b>Aurangabad</b>
-            </div>
-          </footer>
-
-          <!-- Control Sidebar -->
-          <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-          </aside>
-          <!-- /.control-sidebar -->
+{% extends 'master.html' %} {% block body %}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1><b>Farmer Registration</b></h1>
         </div>
-        <!-- ./wrapper -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item">
+              <a href=" {% url 'index' %} ">Home</a>
+            </li>
+            <li class="breadcrumb-item active">Registration</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+            {% if messages %} {% include 'message_alert.html' %} {% endif %}
 
-        <!-- jQuery -->
-        <script src=" {% static 'plugins/jquery/jquery.min.js' %} "></script>
-        <script>
-          $.widget.bridge("uibutton", $.ui.button);
-        </script>
-        <!-- Select2 -->
-        <script src=" {% static '../../plugins/select2/js/select2.full.min.js' %} "></script>
-        <!-- Bootstrap; 4 -->
-        <script src=" {% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %} "></script>
-        <!-- bs-custom-file-input -->
-        <script src=" {% static '../../plugins/bs-custom-file-input/bs-custom-file-input.min.js' %} "></script>
-        <!-- AdminLTE App -->
-        <script src=" {% static 'dist/js/adminlte.js'  %} "></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src=" {% static 'dist/js/demo.js'  %} "></script>
-      <script>
-  setTimeout(function(){
-      if($('#msg').length>0){
-        $('#msg').remove();
-      }
-  }, 5000)
-</script>
-      </body>
-    </html>
-  </head>
-</html>
+      <!-- SELECT2 EXAMPLE -->
+      <form action=" {% url 'registration' %} " method="post">
+        {% csrf_token %}
+        <div class="card card-primary">
+          <div class="card-header">
+            <h2 class="card-title"><b>Personal Details</b></h2>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12">
+                <div class="row">
+                  <div class="col-12 col-md-3">
+                    <label for="farmer_name">Farmer Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="farmer_name"
+                      name="farmer_name"
+                      placeholder="Farmer Full Name"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-1"></div>
+                  <div class="col-12 col-md-3">
+                    <div class="form-group">
+                      <label for="address">Farmer Address</label>
+                      <textarea
+                        class="form-control"
+                        rows="2"
+                        name="address"
+                        id="address"
+                        placeholder="Address E.g At. CIDCO N-4 Aurangabad"
+                        required
+                      ></textarea>
+                    </div>
+                  </div>
+                  <div class="col-md-1"></div>
+                  <div class="col-12 col-md-2">
+                    <label for="Gender">Gender</label>
+                    <div class="form-group">
+                      <select
+                        class="form-control select2bs4"
+                        data-placeholder="Select a Gender"
+                        style="width: 100%"
+                        name="gender"
+                        id="gender"
+                        required
+                      >
+                        <option value="defualt">Select</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-1"></div>
+                </div>
+                <div class="row">
+                  <div class="col-12 col-md-3">
+                    <label for="religion">Religion</label>
+                    <div class="form-group">
+                      <select
+                        class="form-control select2bs4"
+                        data-placeholder="Select a Religion"
+                        style="width: 100%"
+                        name="religion"
+                        id="religion"
+                        required
+                      >
+                        <option value="select">Select</option>
+                        <option>Hindu</option>
+                        <option>Buddhist</option>
+                        <option>Christian</option>
+                        <option>Jain</option>
+                        <option>Muslim</option>
+                        <option>Parsi</option>
+                        <option>Sikh</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-1"></div>
+                  <div class="col-12 col-md-3">
+                    <label for="Caste">Caste</label>
+                    <div class="form-group">
+                      <select
+                        class="form-control select2bs4"
+                        data-placeholder="Select a Caste"
+                        style="width: 100%"
+                        name="caste"
+                        id="caste"
+                        required
+                      >
+                        <option value="select">Select</option>
+                        <option>General</option>
+                        <option>(OBC) Other Backward Class</option>
+                        <option>(SBC) Special Backward Class</option>
+                        <option>(SC) Scheduled Caste</option>
+                        <option>(ST) Scheduled Tribe</option>
+                        <option>(VJNT) Vimukt Jat Nomadic Tribe</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 col-md-3">
+                    <label for="State">State</label>
+                    <div class="form-group">
+                      <select
+                        class="form-control select2bs4"
+                        data-placeholder="Select a State"
+                        style="width: 100%"
+                        name="state"
+                        id="state"
+                        required
+                      >
+                        <option value="select">Select</option>
+                        <option>Maharashtra</option>
+                        <option>Karnataka</option>
+                        <option>Goa</option>
+                        <option>Andhrapradesh</option>
+                        <option>Sikkim</option>
+                        <option>Punjab</option>
+                        <option>Bihar</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-1"></div>
+                  <div class="col-12 col-md-3">
+                    <label for="District">District</label>
+                    <div class="form-group">
+                      <select
+                        class="form-control select2bs4"
+                        data-placeholder="Select a District"
+                        style="width: 100%"
+                        name="district"
+                        id="district"
+                        required
+                      >
+                        <option value="select">Select</option>
+                        <option>Aurangabad</option>
+                        <option>Nashik</option>
+                        <option>Jalgaon</option>
+                        <option>Akola</option>
+                        <option>Washim</option>
+                        <option>Nagpur</option>
+                        <option>Jalna</option>
+                        <option>Beed</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-1"></div>
+                  <div class="col-12 col-md-3">
+                    <label for="Taluka">Taluka</label>
+                    <div class="form-group">
+                      <select
+                        class="form-control select2bs4"
+                        data-placeholder="Select a District"
+                        style="width: 100%"
+                        name="taluka"
+                        id="taluka"
+                        required
+                      >
+                        <option value="select">Select</option>
+                        <option>Aurangabad</option>
+                        <option>Kannad</option>
+                        <option>Soegaon</option>
+                        <option>Sillod</option>
+                        <option>Phulambri</option>
+                        <option>Khuldabad</option>
+                        <option>Vaijapur</option>
+                        <option>Gangapur</option>
+                        <option>Paithan</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-1"></div>
+                  <div class="col-12 col-md-3">
+                    <label for="Village">Village</label>
+                    <div class="form-group">
+                      <select
+                        class="form-control select2bs4"
+                        data-placeholder="Select a District"
+                        style="width: 100%"
+                        name="village"
+                        id="village"
+                        required
+                      >
+                        <option value="select">Select</option>
+                        <option>Chittegaon</option>
+                        <option>Pimpri</option>
+                        <option>Chitte-Pimpalgaon</option>
+                        <option>Shendra</option>
+                        <option>Nipani</option>
+                        <option>Garkheda</option>
+                        <option>Adgaon</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-1"></div>
+                  <div class="col-md-3 form-group">
+                    <label for="pincode">Pincode </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="pincode"
+                      id="pincode"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-1"></div>
+                  <div class="col-md-3 form-group">
+                    <label for="mob">Phone Number </label>
+                    <input
+                      type="tel"
+                      class="form-control"
+                      name="phone"
+                      id="phone"
+                      minlength="10"
+                      maxlength="10"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.card -->
+        <!-- /.card 2 -->
+        <div class="card card-primary">
+          <div class="card-header">
+            <h2 class="card-title"><b>Mulberry Farm Details</b></h2>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12">
+                <div class="row">
+                  <div class="col-12 col-md-3">
+                    <label for="RegistrationNo">Registration No.</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="registration_no"
+                      name="registration_no"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-1"></div>
+                  <div class="col-12 col-md-3">
+                    <label for="Mulberry Year">Mulberry Cultivation Year</label>
+                    <div class="form-group">
+                      <input
+                        type="date"
+                        class="form-control"
+                        name="year"
+                        id="year"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-1"></div>
+                  <div class="col-12 col-md-3">
+                    <label for="RegistrationReceipt"
+                      >Mulberry plantaion Receipt No.</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="receipt_no"
+                      name="receipt_no"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-1"></div>
+                </div>
+                <div class="row">
+                  <div class="col-12 col-md-3">
+                    <label for="Area">Plantation Area (In Acres).</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      name="area"
+                      id="area"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-1"></div>
+                  <div class="col-12 col-md-3">
+                    <label for="Survey No">Survey No.</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      name="survey_no"
+                      id="survey_no"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-1"></div>
+                  <div class="col-12 col-md-3">
+                    <label for="Mulberry type">Mulberry Plant Breed</label>
+                    <div class="form-group">
+                      <select
+                        class="form-control select2bs4"
+                        data-placeholder="Select a type"
+                        style="width: 100%"
+                        name="plant_caste"
+                        id="plant_caste"
+                        required
+                      >
+                        <option value="select">Select</option>
+                        <option>Black Mulberry</option>
+                        <option>Red Mulberry</option>
+                        <option>Morus Alba</option>
+                        <option>Morus serrata</option>
+                        <option>Morus Australias</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.card 2 -->
+        <br />
+
+        <div class="row">
+          <div class="col-md-5"></div>
+          <div class="col-md-1">
+            <input
+              type="submit"
+              class="btn btn-block btn-primary"
+              value="SAVE"
+            />
+          </div>
+          <div class="col-md-1"></div>
+          <br />
+          <div class="col-md-1">
+            <input
+              type="reset"
+              class="btn btn-block btn-danger"
+              value="CANCEL"
+            />
+          </div>
+        </div>
+      </form>
+      <br />
+      <br />
+    </div>
+  </section>
+</div>
+{% endblock body %}
