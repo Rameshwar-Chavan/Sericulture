@@ -1,6 +1,7 @@
 from django.urls import path
 
 from . import views
+from django.core import serializers
 
 urlpatterns = [
     path("", views.index, name="index"),
@@ -10,7 +11,6 @@ urlpatterns = [
     path("Form2/", views.Form2, name="Form2"),
     path("Form3/", views.Form3, name="Form3"),
     path("Form4/", views.Form4, name="Form4"),
-
-    # path("delete_data/<int:id>", views.delete_data, name="delete_data")
+    path("get_form4/<int:id>", views.get_form4, name="get_form4")
 
 ]

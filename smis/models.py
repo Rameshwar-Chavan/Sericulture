@@ -26,8 +26,8 @@ class farmer_registration(models.Model):
     class Meta:
         verbose_name_plural = "farmers"
 
-    def __int__(self):
-        return self.pk
+    def __str__(self):
+        return self.farmer_name
 
 
 class form2(models.Model):
@@ -41,8 +41,8 @@ class form2(models.Model):
     center_name = models.CharField(max_length=255)
     hatching_date = models.DateField(auto_now=False, auto_now_add=False)
 
-    def __int__(self):
-        return self.pk
+    def __str__(self):
+        return self.farmer_id
 
 
 class form3(models.Model):
@@ -63,6 +63,11 @@ class form3(models.Model):
 
 
 class form4(models.Model):
+    farmer = models.ForeignKey(
+        farmer_registration, on_delete=models.CASCADE)
+    sarasari_kosh_kg = models.FloatField(default=None)
+    good_kosh_kg = models.FloatField(default=None)
+    good_kosh_rate = models.FloatField(default=None)
 
-    def __int__(self):
-        return self.pk
+    def __str__(self):
+        return self.farmer_id
