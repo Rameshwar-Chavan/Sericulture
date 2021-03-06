@@ -7,10 +7,12 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, validators
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
+from .decorators import unauthorized_user, allowed_users
 # Create your views here.
 
 
 @login_required(login_url='login')
+@allowed_users(allowed_roles=['Officer', 'Manager'])
 def index(request):
     registration_fetch = farmer_registration.objects.all()
     if request.method == "POST":
@@ -26,6 +28,7 @@ def index(request):
 
 
 @login_required(login_url='login')
+@allowed_users(allowed_roles=['Officer'])
 def registration(request):
     if request.method == "POST":
         fid = form4.objects.filter(farmer_id=request.POST.get(
@@ -61,6 +64,7 @@ def registration(request):
 
 
 @login_required(login_url='login')
+@allowed_users(allowed_roles=['Officer'])
 def Form2(request):
     results = farmer_registration.objects.all()
     if request.method == "POST":
@@ -89,7 +93,26 @@ def Form2(request):
     return render(request, './Form2.html', {'reg_no': results})
 
 
+def get_form1(request, id):
+
+    output_1 = farmer_registration.objects.filter(pk=id).values_list(
+        'farmer_name', 'address', 'village', 'taluka', 'district', 'state', 'area', 'year')
+
+    data = {
+        'farmer_name': output_1[0][0],
+        'address': output_1[0][1],
+        'village': output_1[0][2],
+        'taluka': output_1[0][3],
+        'district': output_1[0][4],
+        'state': output_1[0][5],
+        'area': output_1[0][6],
+        'year': output_1[0][7]
+    }
+    return JsonResponse(data)
+
+
 @login_required(login_url='login')
+@allowed_users(allowed_roles=['Officer', 'Manager'])
 def Form3(request):
     results = farmer_registration.objects.all()
     if request.method == "POST":
@@ -120,7 +143,26 @@ def Form3(request):
     return render(request, './Form3.html', {'reg_no': results})
 
 
+def get_form2(request, id):
+
+    output_2 = form2.objects.filter(farmer=id).values_list(
+        'Grenege_name', 'Andipunjpavati_no', 'date', 'Andipunj_jaat', 'Andipunj_count', 'center_name', 'hatching_date')
+
+    data = {
+        'Grenege_name': output_2[0][0],
+        'Andipunjpavati_no': output_2[0][1],
+        'date': output_2[0][2],
+        'Andipunj_jaat': output_2[0][3],
+        'Andipunj_count': output_2[0][4],
+        'center_name': output_2[0][5],
+        'hatching_date': output_2[0][6]
+
+    }
+    return JsonResponse(data)
+
+
 @login_required(login_url='login')
+@allowed_users(allowed_roles=['Officer'])
 def Form4(request):
     results = farmer_registration.objects.all()
     context = {'reg_no': results}
@@ -140,11 +182,11 @@ def Form4(request):
 
             messages.success(
                 request, 'Subsidy Distrubition Details Saved Successfully ! ')
-            return render(request, './Form4.html', context)
+            return render(request, 'Form4.html', context)
 
         else:
             messages.error(request, 'Subsidy Distrubition Already Present!')
-            return render(request, './Form4.html', context)
+            return render(request, 'Form4.html', context)
 
     return render(request, './Form4.html', context)
 
@@ -164,24 +206,23 @@ def get_form4(request, id):
 # User Login View
 
 
+@unauthorized_user
 def user_login(request):
-    if request.user.is_authenticated:
-        return redirect('index')
-    else:
-        if request.method == 'POST':
-            username = request.POST.get('username')
-            password = request.POST.get('password')
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                login(request, user)
-                messages.success(request, 'Login Successfull')
-                return redirect('index')
-            else:
-                messages.error(request, 'Incorrect User Name or Password')
-                return render(request, 'login.html')
 
-        context = {}
-        return render(request, 'login.html', context)
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            messages.success(request, 'Login Successfull')
+            return redirect('index')
+        else:
+            messages.error(request, 'Incorrect User Name or Password')
+            return render(request, 'login.html')
+
+    context = {}
+    return render(request, 'login.html', context)
 
 # Logout user View
 

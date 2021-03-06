@@ -11,6 +11,8 @@ urlpatterns = [
     path("Form2/", views.Form2, name="Form2"),
     path("Form3/", views.Form3, name="Form3"),
     path("Form4/", views.Form4, name="Form4"),
-    path("get_form4/<int:id>", views.get_form4, name="get_form4")
+    path("get_form1/<int:id>", views.get_form1, name="get_form1"),
+    path("get_form2/<int:id>", views.get_form2, name="get_form2"),
+    path("get_form4/<int:id>", views.get_form4, name="get_form4"),
 
 ]
