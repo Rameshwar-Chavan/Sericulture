@@ -32,7 +32,7 @@
 <div class="wrapper">
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+  <nav class="main-header navbar navbar-expand navbar-light navbar-dark">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -48,6 +48,9 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+    <li class="nav-item d-none d-sm-inline-block ml-auto">
+        <a href=" {% url 'user_logout' %} " class="nav-link mr-2" style="font-size:25px; color:#E6E6FF;"><i class="fa fa-sign-out-alt" aria-hidden="true" style="font-size:25px;color:#E6E6FF"></i></a>
+      </li>
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -55,19 +58,17 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-   <p class="mt-2 ml-5"><a href=" {% url 'user_logout' %} " class="btn btn-danger pl-2 pr-2 pt-2 pb-2">
-      <span>Logout</span>
-    </a></p>
 
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="user-panel mt-1 pb-3 mb-3 d-flex">
         {% comment %} <div class="image">
           <img src=" {% static 'dist/img/avatar.png' %} " class="img-circle elevation-2" alt="User Image">
         </div> {% endcomment %}
         <div class="info">
-          <a href="" class="d-block text text-light">Welcome {{request.user.first_name}} {{request.user.last_name}}</a>
+          <a href=" {% url 'user_logout' %} " class="nav-link mr-5  ml-5" style="font-size:25px;"><i class="fa fa-sign-out-alt" aria-hidden="true" style="font-size:25px;color:#E6E6FF"></i></a>
+          <p href="" class="d-block text text-white" style="font-size:17px">Welcome {{request.user.first_name}} {{request.user.last_name}}</p>
         </div>
       </div>
 
@@ -78,7 +79,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="{% static '#' %}" class="nav-link">
+            <a href="{% static '#' %}" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Menu 
@@ -118,12 +119,12 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href=" {% static '#' %} " class="nav-link">
-              <i class="nav-icon fa fa-table"></i>
+          <li class="nav-item menu">
+            <a href="" class="nav-link active">
+              <i class="nav-icon fas fa-table"></i>
               <p>
-                Report's
-                <i class="fas fa-angle-left right"></i>
+                Report's 
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -233,6 +234,23 @@
         $('#msg').remove();
       }
   }, 10000)
+</script>
+<script>
+  $("#Reg_no").change(function () {
+    var id = $("#Reg_no").val().trim();
+    $.get("/get_form1/" + id, function (data) {
+      $("#name").val(data.farmer_name);
+      $("#address").val(data.address);
+      $("#village").val(data.village);
+      $("#taluka").val(data.taluka);
+      $("#district").val(data.district);
+      $("#state").val(data.state);
+      $("#plant_area").val(data.area);
+      $("#plant_year").val(data.year);
+    });
+  });
+
+  
 </script>
 </body>
 </html>
