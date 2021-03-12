@@ -97,11 +97,13 @@
                                   <td>{{farm_data.district}}</td>
                                   <td>{{farm_data.state}}</td>
                                   <td>{{farm_data.year}}</td>
+                                  
+                                  
                                   <td>
 
                                   <form class="d-inline" action=" " method="post">
                                     {% csrf_token %}
-                                    <input type="submit" class="btn btn-info btn-sm" value="Edit">
+                                    <input type="submit" class="btn btn-info btn-sm"  value="Edit">
                                     <input type="submit" class= "btn btn-danger btn-sm" value="Delete" disabled>
                                   </form>
                                   </td>
@@ -163,11 +165,12 @@
                         <td>{{farmer.district}}</td>
                         <td>{{farmer.state}}</td>
                         <td>{{farmer.year}}</td>
+                        <td><a href="{% url 'Update_Farmer_Registration' farmer.id %} " class="btn btn-info btn-sm">Edit</a></td>
                         <td>
 
                         <form class="d-inline" action=" " method="post">
                           {% csrf_token %}
-                          <input type="submit" class="btn btn-info btn-sm" value="Edit">
+                          {% comment %} <input type="submit" value="Edit"> {% endcomment %}
                           <input type="submit" class="btn btn-danger btn-sm" value="Delete">
                         </form>
                         </td>
