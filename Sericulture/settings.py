@@ -29,7 +29,7 @@ SECRET_KEY = 'p3iczf%)$psn%)nz*l-o%c0!*fd04c(bjy$*wclp^b%1bl(l4)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.43.224']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -85,9 +85,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'SMIS_DB',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
+        'USER': 'debug',
+        'PASSWORD': 'debug',
+        'HOST': 'localhost',
         'PORT': '3306'
     }
 }
