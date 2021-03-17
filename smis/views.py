@@ -10,8 +10,6 @@ from django.contrib.auth.forms import AuthenticationForm
 from .decorators import unauthorized_user, allowed_users
 # Create your views here.
 
-# Home Page View
-
 
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['Officer', 'Manager'])
@@ -27,9 +25,6 @@ def index(request):
             return HttpResponseRedirect('index')
     else:
         return render(request, 'index.html', {'farmers': registration_fetch})
-# End Home Page View
-
-# Farmer Registration View Start
 
 
 @login_required(login_url='login')
@@ -66,19 +61,6 @@ def registration(request):
             return render(request, './registration.html')
 
     return render(request, './registration.html')
-# Farmer Registration View End point
-
-# Farmer Registration Update View Start
-
-
-def Update_Farmer_Registration(request, id):
-    get_farmer_registration = farmer_registration.objects.get(pk=id)
-    
-    context = {'get_farmer_registration': get_farmer_registration}
-    return render(request, 'registration.html', context)
-
-# Farmer Registration Update View End
-# Mullbury View Start
 
 
 @login_required(login_url='login')
@@ -109,7 +91,6 @@ def Form2(request):
             return render(request, './Form2.html', {'reg_no': results})
 
     return render(request, './Form2.html', {'reg_no': results})
-# Mullbury View End
 
 
 def get_form1(request, id):
@@ -222,8 +203,8 @@ def get_form4(request, id):
     }
     return JsonResponse(data)
 
-
 # User Login View
+
 
 @unauthorized_user
 def user_login(request):
@@ -243,9 +224,22 @@ def user_login(request):
     context = {}
     return render(request, 'login.html', context)
 
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['Officer'])
+def Report1(request):
+    registration_fetch = farmer_registration.objects.all()
+    return render(request, 'Report1.html', {'farmers': registration_fetch})
 
-# Logout user View
+
 
 def user_logout(request):
     logout(request)
     return redirect('login')
+
+# This is function for Delete Farmes Registration
+
+# def delete_data(request, id):
+# if request.method == "POST":
+#pi = farmer_registration.objects.get(pk=id)
+# pi.delete()
+# return HttpResponseRedirect('/', {'farmers': pi})
