@@ -6,14 +6,14 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1><b>Farmer Registration</b></h1>
+          <h1 class=""><b></b></h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item">
               <a href=" {% url 'index' %} ">Home</a>
             </li>
-            <li class="breadcrumb-item active">Registration</li>
+            <li class="breadcrumb-item active">नवीन शेतकरी नोंदणी</li>
           </ol>
         </div>
       </div>
@@ -30,7 +30,7 @@
         {% csrf_token %}
         <div class="card card-primary">
           <div class="card-header">
-            <h2 class="card-title"><b>Personal Details</b></h2>
+            <h2 class="card-title"><b>वैयक्तिक माहिती</b></h2>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
@@ -38,33 +38,33 @@
               <div class="col-12">
                 <div class="row">
                   <div class="col-12 col-md-3">
-                    <label for="farmer_name">Farmer Name</label>
+                    <label for="farmer_name">शेतकऱ्याचे नाव</label>
                     <input
                       type="text"
                       class="form-control"
                       id="farmer_name"
                       name="farmer_name"
-                      placeholder="Farmer Full Name"
+                      placeholder="उ.दा. भीमराव किसन चव्हाण"
                       required
                     />
                   </div>
                   <div class="col-md-1"></div>
                   <div class="col-12 col-md-3">
                     <div class="form-group">
-                      <label for="address">Farmer Address</label>
+                      <label for="address">शेतकर्‍याचा पत्ता</label>
                       <textarea
                         class="form-control"
                         rows="2"
                         name="address"
                         id="address"
-                        placeholder="Address E.g At. CIDCO N-4 Aurangabad"
+                        placeholder="शेतकर्‍याचा पत्ता उ.दा. At. CIDCO N-4 Aurangabad"
                         required
                       ></textarea>
                     </div>
                   </div>
                   <div class="col-md-1"></div>
                   <div class="col-12 col-md-2">
-                    <label for="Gender">Gender</label>
+                    <label for="Gender">लिंग</label>
                     <div class="form-group">
                       <select
                         class="form-control select2bs4"
@@ -74,9 +74,9 @@
                         id="gender"
                         required
                       >
-                        <option value="defualt">Select</option>
-                        <option>Male</option>
-                        <option>Female</option>
+                        <option value="">निवडा</option>
+                        <option>पुरुष</option>
+                        <option>स्त्री</option>
                       </select>
                     </div>
                   </div>
@@ -84,7 +84,7 @@
                 </div>
                 <div class="row">
                   <div class="col-12 col-md-3">
-                    <label for="religion">Religion</label>
+                    <label for="religion">धर्म</label>
                     <div class="form-group">
                       <select
                         class="form-control select2bs4"
@@ -94,7 +94,7 @@
                         id="religion"
                         required
                       >
-                        <option value="select">Select</option>
+                        <option value="">निवडा</option>
                         <option>Hindu</option>
                         <option>Buddhist</option>
                         <option>Christian</option>
@@ -107,7 +107,7 @@
                   </div>
                   <div class="col-md-1"></div>
                   <div class="col-12 col-md-3">
-                    <label for="Caste">Caste</label>
+                    <label for="Caste">जातीचा प्रवर्ग</label>
                     <div class="form-group">
                       <select
                         class="form-control select2bs4"
@@ -117,7 +117,7 @@
                         id="caste"
                         required
                       >
-                        <option value="select">Select</option>
+                        <option value="">निवडा</option>
                         <option>General</option>
                         <option>(OBC) Other Backward Class</option>
                         <option>(SBC) Special Backward Class</option>
@@ -130,7 +130,7 @@
                 </div>
                 <div class="row">
                   <div class="col-12 col-md-3">
-                    <label for="State">State</label>
+                    <label for="State">राज्य</label>
                     <div class="form-group">
                       <select
                         class="form-control select2bs4"
@@ -140,7 +140,7 @@
                         id="state"
                         required
                       >
-                        <option value="select">Select</option>
+                        <option value="">निवडा</option>
                         <option>Maharashtra</option>
                         <option>Karnataka</option>
                         <option>Goa</option>
@@ -153,7 +153,7 @@
                   </div>
                   <div class="col-md-1"></div>
                   <div class="col-12 col-md-3">
-                    <label for="District">District</label>
+                    <label for="District">जिल्हा</label>
                     <div class="form-group">
                       <select
                         class="form-control select2bs4"
@@ -163,7 +163,7 @@
                         id="district"
                         required
                       >
-                        <option value="select">Select</option>
+                        <option value="">निवडा</option>
                         <option>Aurangabad</option>
                         <option>Nashik</option>
                         <option>Jalgaon</option>
@@ -177,7 +177,7 @@
                   </div>
                   <div class="col-md-1"></div>
                   <div class="col-12 col-md-3">
-                    <label for="Taluka">Taluka</label>
+                    <label for="Taluka">तालुका</label>
                     <div class="form-group">
                       <select
                         class="form-control select2bs4"
@@ -187,7 +187,7 @@
                         id="taluka"
                         required
                       >
-                        <option value="select">Select</option>
+                        <option value="">निवडा</option>
                         <option>Aurangabad</option>
                         <option>Kannad</option>
                         <option>Soegaon</option>
@@ -202,7 +202,7 @@
                   </div>
                   <div class="col-md-1"></div>
                   <div class="col-12 col-md-3">
-                    <label for="Village">Village</label>
+                    <label for="Village">गाव</label>
                     <div class="form-group">
                       <select
                         class="form-control select2bs4"
@@ -212,7 +212,7 @@
                         id="village"
                         required
                       >
-                        <option value="select">Select</option>
+                        <option value="">निवडा</option>
                         <option>Chittegaon</option>
                         <option>Pimpri</option>
                         <option>Chitte-Pimpalgaon</option>
@@ -225,25 +225,29 @@
                   </div>
                   <div class="col-md-1"></div>
                   <div class="col-md-3 form-group">
-                    <label for="pincode">Pincode </label>
+                    <label for="pincode">पीन </label>
                     <input
                       type="text"
                       class="form-control"
                       name="pincode"
                       id="pincode"
                       required
+                      placeholder="पीन - 431007"
                     />
                   </div>
                   <div class="col-md-1"></div>
                   <div class="col-md-3 form-group">
-                    <label for="mob">Phone Number </label>
+                    <label for="mob">फोन नंबर</label>
                     <input
                       type="tel"
                       class="form-control"
                       name="phone"
                       id="phone"
                       minlength="10"
-                      maxlength="10"
+                      maxlength="13"
+                      pattern="+91[7-9]{2}-[0-9]{3}-[0-9]{4}"
+                      value="+91"
+                      placeholder="फोन नंबर - 9645781523"
                       required
                     />
                   </div>
@@ -256,7 +260,7 @@
         <!-- /.card 2 -->
         <div class="card card-primary">
           <div class="card-header">
-            <h2 class="card-title"><b>Mulberry Farm Details</b></h2>
+            <h2 class="card-title"><b>तुतीची फार्म तपशील</b></h2>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
@@ -264,18 +268,19 @@
               <div class="col-12">
                 <div class="row">
                   <div class="col-12 col-md-3">
-                    <label for="RegistrationNo">Registration No.</label>
+                    <label for="RegistrationNo">रजिष्ट्रेशन नंबर</label>
                     <input
                       type="text"
                       class="form-control"
                       id="registration_no"
                       name="registration_no"
+                      placeholder="01"
                       required
                     />
                   </div>
                   <div class="col-md-1"></div>
                   <div class="col-12 col-md-3">
-                    <label for="Mulberry Year">Mulberry Cultivation Year</label>
+                    <label for="Mulberry Year">तुती लागवडीचे वर्ष</label>
                     <div class="form-group">
                       <input
                         type="date"
@@ -283,19 +288,21 @@
                         name="year"
                         id="year"
                         required
+                        placeholder="12-20-2011"
                       />
                     </div>
                   </div>
                   <div class="col-md-1"></div>
                   <div class="col-12 col-md-3">
                     <label for="RegistrationReceipt"
-                      >Mulberry plantaion Receipt No.</label
+                      >तुती लागवड नोंदणी फी जमा पावती क्रमांक.</label
                     >
                     <input
                       type="text"
                       class="form-control"
                       id="receipt_no"
                       name="receipt_no"
+                      placeholder="152"
                       required
                     />
                   </div>
@@ -303,29 +310,31 @@
                 </div>
                 <div class="row">
                   <div class="col-12 col-md-3">
-                    <label for="Area">Plantation Area (In Acres).</label>
+                    <label for="Area">लागवडीचे क्षेत्र(एकर,गुंठे).</label>
                     <input
                       type="number"
                       class="form-control"
                       name="area"
                       id="area"
+                      placeholder="2.5 एकर किंवा 100 गुंठे"
                       required
                     />
                   </div>
                   <div class="col-md-1"></div>
                   <div class="col-12 col-md-3">
-                    <label for="Survey No">Survey No.</label>
+                    <label for="Survey No">शेत सर्व्हे नंबर</label>
                     <input
                       type="number"
                       class="form-control"
                       name="survey_no"
                       id="survey_no"
+                      placeholder="सर्व्हे नंबर - 254"
                       required
                     />
                   </div>
                   <div class="col-md-1"></div>
                   <div class="col-12 col-md-3">
-                    <label for="Mulberry type">Mulberry Plant Breed</label>
+                    <label for="Mulberry type">तुतीचे वाण/जात</label>
                     <div class="form-group">
                       <select
                         class="form-control select2bs4"
@@ -335,7 +344,7 @@
                         id="plant_caste"
                         required
                       >
-                        <option value="select">Select</option>
+                        <option value="">निवडा</option>
                         <option>Black Mulberry</option>
                         <option>Red Mulberry</option>
                         <option>Morus Alba</option>
@@ -357,8 +366,8 @@
           <div class="col-md-1">
             <input
               type="submit"
-              class="btn btn-block btn-primary"
-              value="SAVE"
+              class="btn btn-block btn-success"
+              value="जतन करा"
             />
           </div>
           <div class="col-md-1"></div>
@@ -367,7 +376,7 @@
             <input
               type="reset"
               class="btn btn-block btn-danger"
-              value="CANCEL"
+              value="रद्द करा"
             />
           </div>
         </div>

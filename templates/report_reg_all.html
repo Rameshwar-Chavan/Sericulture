@@ -1,0 +1,118 @@
+
+{% extends 'master.html' %}
+{% block body %}
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0"></h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="">Home</a></li>
+              <li class="breadcrumb-item active">सर्व शेतकरी नोंदणी तपशील</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <div class="mb-5 no-print">
+              <div class="card-header">
+                <a href="{% url 'report_mull_all' %}" class="btn btn-light btn-outline-primary d-inline d-inline-block ml-2 mr-2 mb-2 pl-2 pr-2 pb-2 pt2">अंडीपुंज/चाकी वाटप तपशील</a>
+                <a href="{% url 'report_prod_all' %}" class="ml-1 btn btn-light btn-outline-primary d-inline d-inline-block ml-2 mr-2 mb-2 pl-2 pr-2 pb-2 pt2">कोष उत्पादन विक्री तपशील</a>
+                <a href="{% url 'report_sub_all' %}" class="ml-1 btn btn-light btn-outline-primary d-inline d-inline-block ml-2 mr-2 mb-1 pl-2 pr-2 pb-2 pt2">कोष अनुदान वितरण तपशील</a>
+              </div>
+            </div>
+
+
+  <!-- Main content -->
+      <section class="content">
+      
+          <div class="container-fluid">
+    {% if messages %}
+            {% include 'message_alert.html' %}
+        {% endif %}
+
+            <div class="card card-primary">
+              <div class="card-header">
+                <h1 class="card-title"><b>सर्व शेतकरी नोंदणी तपशील</b></h1>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-12">
+                     <div class="row">
+                      <div class="col-12">
+                        <div class="card">
+                            <!-- /.card-header -->
+                            <div class="card-body table-responsive p-1">
+                              <table class="table table-hover text-nowrap text-left table-borderless">
+                                <thead>
+                                  <tr class="table-active">
+                                    <th scope="row">रजिष्ट्रेशन नंबर</th>
+                                    <th>शेतकऱ्याचे नाव</th>
+                                    <th>शेतकर्‍याचा पत्ता</th>
+                                    <th>गाव</th>
+                                    <th>तालुका</th>
+                                    <th>जिल्हा</th>
+                                    <th>तुती लागवड क्षेत्र एकर</th>
+                                    <th>तुती लागवड वर्ष</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                {% if farmers %}
+                                  {% for farmer in farmers %}
+                                  <tr>
+                                    <td>{{farmer.id}}</td>
+                                    <td>{{farmer.farmer_name}}</td>
+                                    <td>{{farmer.address}}</td>
+                                    <td>{{farmer.village}}</td>
+                                    <td>{{farmer.taluka}}</td>
+                                    <td>{{farmer.district}}</td>
+                                    <td>{{farmer.area}}</td>
+                                    <td>{{farmer.year}}</td>
+                                  </tr>
+                                  {% endfor %}
+                                  {% else %}
+                                  <tr class="text text-danger bg-danger">
+                                    <td>No Record found !</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                  </tr>
+                                  {% endif %}
+                                </tbody>
+                              </table>
+                            </div>
+                         <!-- /.card-body -->
+                        <!-- /.card -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <div class="col-md-1 no-print">
+                <a class="btn btn-success mb-3 ml-2 btn-block" onclick="window.print()"><i class="fas fa-print"></i> Print</a>
+              </div>
+              <br>
+            <!-- Card 1 End-->
+          </div>
+          <br>
+          <!--Table Row-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+          <!-- Card 1 End-->
+        </div>
+    </section>
+</div>
+{% endblock body %}

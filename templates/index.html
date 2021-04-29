@@ -7,12 +7,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+            <h1 class="m-0"></h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard</li>
+              <li class="breadcrumb-item active">सर्व शेतकरी नोंदणी तपशील</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -28,7 +28,7 @@
 
             <div class="card card-primary">
               <div class="card-header">
-                <h2 class="card-title"><b>Farmer's Indvidual Details</b></h2>
+                <h2 class="card-title"><b>सर्व शेतकरी नोंदणी तपशील</b></h2>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -45,6 +45,7 @@
                             class="form-control"
                             name="search"
                             id="farmer_search"
+                            required
                           />
                           <span class="input-group-append">
                             <input
@@ -58,65 +59,6 @@
                     </div>
                     </form>
                     <br />
-                     <div class="row">
-                      <div class="col-12">
-                        <div class="card">
-                          <div class="card-header bg-light">
-                            <h3 class="card-title">
-                              All Farmer Details
-                            </h3>
-                          </div>
-                          <!-- /.card-header -->
-                          <div class="card-body table-responsive p-0">
-                            <table class="table table-hover text-nowrap">
-                              <thead>
-
-                                <tr>
-
-                                  <th scope="row">Registration ID</th>
-                                  <th>Farmers Name</th>
-                                  <th>Address</th>
-                                  <th>Village</th>
-                                  <th>Taluka</th>
-                                  <th>District</th>
-                                  <th>State</th>
-                                  <th>Registration Date</th>
-                                  <th>Action</th>
-                                </tr>
-
-                              </thead>
-                              <tbody>
-
-                                {% for farm_data in data %}
-                                <tr>
-                                  <td> {{farm_data.id}} </td>
-                                  <td> {{farm_data.farmer_name}} </td>
-                                  <td>{{farm_data.address}}</td>
-                                  <td>{{farm_data.village}}</td>
-                                  <td>{{farm_data.taluka}}</td>
-                                  <td>{{farm_data.district}}</td>
-                                  <td>{{farm_data.state}}</td>
-                                  <td>{{farm_data.year}}</td>
-                                  
-                                  
-                                  <td>
-
-                                  <form class="d-inline" action=" " method="post">
-                                    {% csrf_token %}
-                                    <input type="submit" class="btn btn-info btn-sm"  value="Edit">
-                                    <input type="submit" class= "btn btn-danger btn-sm" value="Delete" disabled>
-                                  </form>
-                                  </td>
-                                </tr>{% endfor %}
-
-                              </tbody>
-                            </table>
-                          </div>
-                          <!-- /.card-body -->
-                        </div>
-                        <!-- /.card -->
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -129,33 +71,32 @@
           <div class="row">
             <div class="col-12">
               <div class="card">
-                <div class="card-header bg-light">
+                {% comment %} <div class="card-header bg-light">
                   <h3 class="card-title">
-                    All Farmer Details
+                    सर्व शेतकरी नोंदणी तपशील
                   </h3>
-                </div>
+                </div> {% endcomment %}
                 <!-- /.card-header -->
                 <div class="card-body table-responsive p-0">
                   <table class="table table-hover text-nowrap">
-                    <thead>
-                    
-                      <tr>
-            
-                        <th scope="row">Registration ID</th>
-                        <th>Farmers Name</th>
-                        <th>Address</th>
-                        <th>Village</th>
-                        <th>Taluka</th>
-                        <th>District</th>
-                        <th>State</th>
-                        <th>Registration Date</th>
-                        <th>Action</th>
+                    <thead>                 
+                      <tr class="table-primary">
+                         <th scope="row">रजिष्ट्रेशन नंबर</th>
+                        <th>शेतकऱ्याचे नाव</th>
+                        <th>शेतकर्‍याचा पत्ता</th>
+                        <th>गाव</th>
+                        <th>तालुका</th>
+                        <th>जिल्हा</th>
+                        <th>तुती लागवड क्षेत्र एकर</th>
+                        <th>तुती लागवड वर्ष</th>
+                        <th class="text-center">कृती</th>
                         
                       </tr>
                       
                     </thead>
                     <tbody>
-                      {% for farmer in farmers %}
+                      {% if data %}
+                        {% for farmer in data %}
                       <tr>
                         <td> {{farmer.id}} </td>
                         <td> {{farmer.farmer_name}} </td>
@@ -163,18 +104,58 @@
                         <td>{{farmer.village}}</td>
                         <td>{{farmer.taluka}}</td>
                         <td>{{farmer.district}}</td>
-                        <td>{{farmer.state}}</td>
+                        <td>{{farmer.area}}</td>
                         <td>{{farmer.year}}</td>
-                        <td><a href="{% url 'Update_Farmer_Registration' farmer.id %} " class="btn btn-info btn-sm">Edit</a></td>
+                        
                         <td>
-
-                        <form class="d-inline" action=" " method="post">
-                          {% csrf_token %}
-                          {% comment %} <input type="submit" value="Edit"> {% endcomment %}
-                          <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+                          <a href="{% url 'update_farmer' farmer.id %}" class="btn btn-info btn-sm btn-inline">अद्यतनित करा</a>
+                            <form method="POST" action="{% url 'delete_farmer' farmer.id %}" class="d-inline">
+                              {% csrf_token %}
+                                <input type="submit" class="btn btn-danger btn-sm btn-inline" value="हटवा">
+                            </form>
+                        </td>
+                      {% endfor %}
+                      {% elif farmers %}
+                        {% for farmer in farmers %}
+                      <tr>
+                        <td> {{farmer.id}} </td>
+                        <td> {{farmer.farmer_name}} </td>
+                        <td>{{farmer.address}}</td>
+                        <td>{{farmer.village}}</td>
+                        <td>{{farmer.taluka}}</td>
+                        <td>{{farmer.district}}</td>
+                        <td>{{farmer.area}}</td>
+                        <td>{{farmer.year}}</td>
+                        
+                        <td>
+                        <a href="{% url 'update_farmer' farmer.id %}" class="btn btn-info btn-sm">अद्यतनित करा</a>
+                        <form method="POST" action="{% url 'delete_farmer' farmer.id %}" class="d-inline">
+                        {% csrf_token %}
+                        <input type="submit" class="btn btn-danger btn-sm btn-inline" value="हटवा">
                         </form>
                         </td>
-                      </tr>{% endfor %}
+                        {% comment %} <td>
+                        <form class="d-inline" action=" " method="post">
+                          {% csrf_token %}
+                          <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+                        </form>
+                        </td> {% endcomment %}
+                      </tr>
+                      {% endfor %}
+
+                      {% else %}
+                      <tr class="text text-danger bg-danger">
+                        <td> No Record found !</td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                      </tr>
+                      {% endif %}                      
                     </tbody>
                   </table>
                 </div>

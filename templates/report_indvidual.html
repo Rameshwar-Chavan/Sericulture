@@ -1,0 +1,227 @@
+{% extends 'master.html' %}
+
+{% block body %}
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-info"></h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="">Home</a></li>
+              <li class="breadcrumb-item active">वैयक्तिक शेतकरी तपशील</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+
+  <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+            {% if messages %}
+                {% include 'message_alert.html' %}
+            {% endif %}
+
+            <!-- Report Data Table-->
+
+            <div class="card card-primary">
+              <div class="card-header">
+                <h2 class="card-title"><b>वैयक्तिक शेतकरी तपशील</b></h2>
+              </div>
+              <!-- /.card-header -->
+              {% if not data%}
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-12">
+                    <form method="POST" action="{% url 'report_indvidual' %}">
+                      {% csrf_token %}
+                    <div class="row no-print">
+                      <div class="col-12 col-md-3">
+                        <div class="input-group input-group-sm">
+                          <input
+                            type="text"
+                            placeholder=" Enter Registration Number"
+                            class="form-control no-print"
+                            name="search"
+                            id="farmer_search"
+                            required
+                          />
+                          <span class="input-group-append no-print">
+                            <input
+                              type="submit"
+                              value="Search"
+                              class="btn btn-primary btn-flat"
+                            />
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    {% elif data %}
+                    <div class="row mt-5">
+                      <div class="col-12">
+                        <div class="card">
+                          <div class="card-header bg-light">
+                           
+                            <h3 class="card-title text-bold">
+                               शेतकरी नोंदणी तपशील
+                            </h3>
+                           
+                          </div>
+                          <!-- /.card-header -->
+                          <div class="card-body table table-responsive">
+                            <table class="table text table-borderless">
+                                <tr>
+                                  <th>रजिष्ट्रेशन नंबर</th>
+                                  <th>शेतकऱ्याचे नाव</th>
+                                  <th>शेतकर्‍याचा पत्ता</th>
+                                  <th>गाव</th>                                  
+                                </tr>
+                                {% for farm_data in data %}
+                                <tr>
+                                  <td> {{farm_data.id}} </td>
+                                  <td> {{farm_data.farmer_name}} </td>
+                                  <td>{{farm_data.address}}</td>
+                                  <td>{{farm_data.village}}</td>
+                                </tr>{% endfor %}
+                                  <tr>
+                                    <th>तालुका</th>
+                                    <th>जिल्हा</th>
+                                    <th>तुती लागवड क्षेत्र एकर</th>
+                                    <th>तुती लागवड वर्ष</th>
+                                  </tr>
+                                  {% for farm_data in data %}
+                                  <tr>
+                                    <td>{{farm_data.taluka}}</td>
+                                    <td>{{farm_data.district}}</td>
+                                    <td>{{farm_data.area}}</td>
+                                    <td>{{farm_data.year}}</td>
+                                  </tr>{% endfor %}
+                            </table>
+                          </div>
+                        </div>
+                        <!-- /.card -->
+                        <div class="row">
+                      <div class="col-12">
+                        <div class="card">
+                          <div class="card-header bg-light">
+                            <h3 class="card-title text-bold">
+                               अंडीपुंज/चाकी वाटप  तपशील
+                            </h3>
+                          </div>
+                          <!-- /.card-header -->
+                          <div class="card-body table table-responsive">
+                            <table class="table text table-borderless">
+                                <tr>
+                                  <th>ग्रेनेजचे नाव</th>
+                                  <th>अंडीपुंजपावती क्रमांक</th>
+                                  <th>दिनांक</th>
+                                  <th>अंडीपुंज जात</th>                                  
+                                </tr>
+                                {% for farm_data in form2_match %}
+                                <tr>
+                                  <td> {{farm_data.Grenege_name}} </td>
+                                  <td> {{farm_data.Andipunjpavati_no}} </td>
+                                  <td>{{farm_data.date}}</td>
+                                  <td>{{farm_data.Andipunj_jaat}}</td>
+                                </tr>{% endfor %}
+                                  <tr>
+                                    <th>अंडीपुंज संख्या</th>
+                                    <th>चॉकी सेंटरचे नाव</th>
+                                    <th>हॅचिंग तारीख</th>
+                                    </tr>
+                                  {% for farm_data in form2_match %}
+                                  <tr>
+                                    <td>{{farm_data.Andipunj_count}}</td>
+                                    <td>{{farm_data.center_name}}</td>
+                                    <td>{{farm_data.hatching_date}}</td>
+                                    </tr>{% endfor %}
+                            </table>
+                          </div>
+                        </div>
+                        <!-- /.card -->
+                        <div class="row">
+                      <div class="col-12">
+                        <div class="card">
+                          <div class="card-header bg-light">
+                            <h3 class="card-title text-bold">
+                               कोष उत्पादन  विक्री  तपशील
+                            </h3>
+                          </div>
+                          <!-- /.card-header -->
+                          <div class="card-body table table-responsive">
+                            <table class="table text table-borderless">
+                                <tr>
+                                  <th>कोष बाजारपेठ नाव</th>
+                                  <th>पावती क्रमांक</th>
+                                  <th>दिनांक</th>
+                                  <th>चांगल्या कोषांचे वजन कि.ग्रॅ.</th>                                  
+                                </tr>
+                                {% for farm_data in form3_match %}
+                                <tr>
+                                  <td> {{farm_data.kosh_bajarpeth_name}} </td>
+                                  <td> {{farm_data.pavti_no}} </td>
+                                  <td>{{farm_data.date}}</td>
+                                  <td>{{farm_data.good_kosh_kg}}</td>
+                                </tr>{% endfor %}
+                                  <tr>
+                                    <th>इतर कोष (डबल/डागाळ/पोचट) कि.ग्रॅ.</th>
+                                    <th>चांगल्या कोषांना मिळालेला दर प्रति कि.ग्रॅ.</th>
+                                    <th>एकुण कोष कि.ग्रॅ.</th>
+                                    <th>एकुण रक्कम</th>
+                                  </tr>
+                                  {% for farm_data in form3_match %}
+                                  <tr>
+                                    <td>{{farm_data.other_kosh_kg}}</td>
+                                    <td>{{farm_data.good_kosh_rate_kg}}</td>
+                                    <td>{{farm_data.total_kosh_kg}}</td>
+                                    <td>{{farm_data.total_kosh_amount}}</td>
+                                  </tr>{% endfor %}
+                            </table>
+                          </div>
+                        </div>
+                        <!-- /.card -->
+                        <div class="row">
+                      <div class="col-12">
+                        <div class="card">
+                          <div class="card-header bg-light">
+                            <h3 class="card-title text-bold">
+                               कोष अनुदान  वितरण तपशील
+                            </h3>
+                          </div>
+                          <!-- /.card-header -->
+                          <div class="card-body table table-responsive">
+                            <table class="table text-pos-right table-borderless">
+                                <tr>
+                                  <th>अं.पुं सरासरी उत्पादन कि.ग्रॅ</th>
+                                  <th>अनुदानास पात्र कोषांचे वजन कि.ग्रॅ.</th>
+                                  <th>देय अनुदान रक्कम रू.</th>                               
+                                </tr>
+                                {% for farm_data in form4_match %}
+                                <tr>
+                                  <td> {{farm_data.sarasari_kosh_kg}} </td>
+                                  <td> {{farm_data.good_kosh_kg}} </td>
+                                  <td>{{farm_data.good_kosh_rate}}</td>
+                                </tr>{% endfor %}
+                            </table>
+                          </div>
+                        </div>
+                        <!-- /.card -->
+                        <div class="col-md-1 no-print">
+                          <a class="btn btn-success mb-3 ml-2 btn-block" onclick="window.print()"><i class="fas fa-print"></i> Print</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                    
+                    {% endif %}
+                    </form>
+                </div>
+              </div>
+            </div>
+            <!-- Card 1 End-->
+            </div>
+  {% endblock body %}

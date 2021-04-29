@@ -1,0 +1,17 @@
+{% extends 'master.html' %}
+{% block body %}
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+        <div class="container-fluid">
+        <p>Are you sure you want to delete {{farmer.name}}</p>
+        <form method="post" action="">
+        {% csrf_token %}
+        <a href="{% url 'index' %} " class="btn btn-info">Cancel</a>
+        <input type="submit" value="Confirm" class="btn btn-danger">
+        </form>
+        </div>
+        </div>
+    </div>
+{% endblock body %}
