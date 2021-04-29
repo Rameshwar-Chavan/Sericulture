@@ -31,8 +31,8 @@ def index(request):
 @allowed_users(allowed_roles=['Officer'])
 def registration(request):
     if request.method == "POST":
-        fid = form4.objects.filter(farmer_id=request.POST.get(
-            'phone')).values_list('id', flat=True)
+        fid = farmer_registration.objects.filter(registration_no=request.POST.get(
+            'registration_no')).values_list('registration_no', flat=True)
         if not fid and request.POST.get('farmer_name') and request.POST.get('address') and request.POST.get('gender') and request.POST.get('religion') and request.POST.get('caste') and request.POST.get('state') and request.POST.get('district') and request.POST.get('taluka') and request.POST.get('village') and request.POST.get('pincode') and request.POST.get('phone') and request.POST.get('registration_no') and request.POST.get('year') and request.POST.get('receipt_no') and request.POST.get('area') and request.POST.get('survey_no') and request.POST.get('plant_caste'):
             insert = farmer_registration()
             insert.farmer_name = request.POST.get('farmer_name')
@@ -120,17 +120,17 @@ def Form3(request):
             'Reg_no')).values_list('id', flat=True)
         if not fid and request.POST.get('कोष_बाजारपेठ_नाव') and request.POST.get('पावती_क्रमांक') and request.POST.get('दिनांक') and request.POST.get('कोषांचे_वजन') and request.POST.get('इतर_कोष') and request.POST.get('दर_प्रति_कि_ग्रॅ') and request.POST.get('Reg_no'):
             obj3 = form3()
-            obj3.कोष_बाजारपेठ_नाव = request.POST.get('कोष_बाजारपेठ_नाव')
-            obj3.पावती_क्रमांक = request.POST.get('पावती_क्रमांक')
-            obj3.दिनांक = request.POST.get('दिनांक')
-            obj3.चांगल्या_कोषांचे_वजन_कि_ग्रॅ = request.POST.get('कोषांचे_वजन')
-            obj3.इतर_कोष_कि_ग्रॅ = request.POST.get('इतर_कोष')
-            obj3.चांगल्या_कोषांना_मिळालेला_दर_प्रति_कि_ग्रॅ = request.POST.get(
+            obj3.kosh_bajarpeth_name = request.POST.get('कोष_बाजारपेठ_नाव')
+            obj3.pavti_no = request.POST.get('पावती_क्रमांक')
+            obj3.date = request.POST.get('दिनांक')
+            obj3.good_kosh_kg = request.POST.get('कोषांचे_वजन')
+            obj3.other_kosh_kg = request.POST.get('इतर_कोष')
+            obj3.good_kosh_rate_kg = request.POST.get(
                 'दर_प्रति_कि_ग्रॅ')
-            obj3.एकुण_कोष_कि_ग्रॅ = int(
-                obj3.चांगल्या_कोषांचे_वजन_कि_ग्रॅ) + int(obj3.इतर_कोष_कि_ग्रॅ)
-            obj3.एकुण_रक्कम = int(obj3.चांगल्या_कोषांचे_वजन_कि_ग्रॅ) * \
-                int(obj3.चांगल्या_कोषांना_मिळालेला_दर_प्रति_कि_ग्रॅ)
+            obj3.total_kosh_kg = int(
+                obj3.good_kosh_kg) + int(obj3.other_kosh_kg)
+            obj3.total_kosh_amount = int(obj3.good_kosh_kg) * \
+                int(obj3.good_kosh_rate_kg)
             obj3.farmer_id = request.POST.get('Reg_no')
             obj3.save()
             messages.success(
@@ -195,7 +195,7 @@ def Form4(request):
 def get_form4(request, id):
     form_2 = form2.objects.filter(farmer_id=id).values_list('Andipunj_count')
     form_3 = form3.objects.filter(farmer_id=id).values_list(
-        'चांगल्या_कोषांचे_वजन_कि_ग्रॅ', 'चांगल्या_कोषांना_मिळालेला_दर_प्रति_कि_ग्रॅ')
+        'good_kosh_kg', 'good_kosh_rate_kg')
     data = {
         'a_count': form_2[0][0],
         'good_kosh_kg': form_3[0][0],
@@ -203,9 +203,81 @@ def get_form4(request, id):
     }
     return JsonResponse(data)
 
+
+
+# Farmer Update View
+
+def update_farmer(request,id):
+    if request.method == 'GET':
+        update_farm=farmer_registration.objects.get(pk=id)
+        messages.success(request,'Farmer record is Updated Successfully')
+        return render(request,'registration.html',{'update_farm':update_farm})
+    else:
+        return render(request,'registration.html',{'update_farm':update_farm})
+
+def delete_farmer(request,id):
+    if request.method=='POST':
+        delete_farm=farmer_registration.objects.get(pk=id)
+        delete_farm.delete()
+        messages.success(request,'Farmer is Deleted Successfully!')
+        return redirect('index')
+    else:
+        messages.info(request,'Error Farmer is not deleted!')
+        return redirect('index')
+
+
+#All Farmer's Registration Report View
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['Officer'])
+def report_reg_all(request):
+    registration_fetch = farmer_registration.objects.all()
+    return render(request, 'report_reg_all.html', {'farmers': registration_fetch})
+
+#All Farmer's Mullburry Report View
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['Officer'])
+def report_mull_all(request):
+    mullburry_fetch = form2.objects.all()
+    farmer_fetch = farmer_registration.objects.all()
+    return render(request, 'report_mull_all.html', {'farmers': mullburry_fetch,'farmer_fetch':farmer_fetch})
+
+#All Farmer's Production Report View
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['Officer'])
+def report_prod_all(request):
+    production_fetch = form3.objects.all()
+    return render(request, 'report_prod_all.html', {'farmers': production_fetch})
+
+#All Farmer's Subsidy Report View
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['Officer'])
+def report_sub_all(request):
+    subsidy_fetch = form4.objects.all()
+    return render(request, 'report_sub_all.html', {'farmers': subsidy_fetch})
+
+#All Farmer's Individual Report View
+@login_required(login_url='login')
+@allowed_users(allowed_roles=['Officer'])
+def report_indvidual(request):
+    farmers = farmer_registration.objects.all()
+    if request.method == "POST":
+        farmer_search = request.POST['search']
+        if farmer_search:
+            match = farmer_registration.objects.filter(pk=farmer_search)
+            form2_match = form2.objects.filter(farmer=farmer_search)
+            form3_match = form3.objects.filter(farmer=farmer_search)
+            form4_match = form4.objects.filter(farmer=farmer_search)
+            context={'data': match,'farmers':farmers,'form2_match':form2_match,'form3_match':form3_match,'form4_match':form4_match}
+            return render(request, 'report_indvidual.html',context)
+
+        else:
+            messages.error(request, 'Farmers  Data is not Present !')
+            return render(request, 'index.html')
+    else:
+        return render(request, 'report_indvidual.html')
+
+
 # User Login View
-
-
 @unauthorized_user
 def user_login(request):
 
@@ -224,14 +296,9 @@ def user_login(request):
     context = {}
     return render(request, 'login.html', context)
 
-@login_required(login_url='login')
-@allowed_users(allowed_roles=['Officer'])
-def Report1(request):
-    registration_fetch = farmer_registration.objects.all()
-    return render(request, 'Report1.html', {'farmers': registration_fetch})
 
 
-
+# User Logout View
 def user_logout(request):
     logout(request)
     return redirect('login')

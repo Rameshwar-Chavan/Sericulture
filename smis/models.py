@@ -49,14 +49,14 @@ class form3(models.Model):
 
     farmer = models.ForeignKey(
         farmer_registration, on_delete=models.CASCADE, default=None)
-    कोष_बाजारपेठ_नाव = models.CharField(max_length=255)
-    पावती_क्रमांक = models.IntegerField()
-    दिनांक = models.DateField(auto_now=False, auto_now_add=False)
-    चांगल्या_कोषांचे_वजन_कि_ग्रॅ = models.BigIntegerField()
-    इतर_कोष_कि_ग्रॅ = models.FloatField()
-    चांगल्या_कोषांना_मिळालेला_दर_प्रति_कि_ग्रॅ = models.FloatField()
-    एकुण_कोष_कि_ग्रॅ = models.FloatField()
-    एकुण_रक्कम = models.FloatField()
+    kosh_bajarpeth_name = models.CharField(max_length=255)
+    pavti_no = models.IntegerField()
+    date = models.DateField(auto_now=False, auto_now_add=False)
+    good_kosh_kg = models.BigIntegerField()
+    other_kosh_kg = models.FloatField()
+    good_kosh_rate_kg = models.FloatField()
+    total_kosh_kg = models.FloatField()
+    total_kosh_amount = models.FloatField()
 
     def __str__(self):
         return self.farmer
